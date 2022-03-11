@@ -18,7 +18,7 @@ HASH_MAP = {
     "--sha3_384": hashlib.sha384,
     "--sha3_512": hashlib.sha512,
     "--shake_128": hashlib.shake_128,
-    "--shake_256": hashlib.shake_256
+    "--shake_256": hashlib.shake_256,
 }
 
 
@@ -31,7 +31,7 @@ def help():
 
 if len(sys.argv) < 2:
     help()
-    exit(0)
+    sys.exit(0)
 
 offset = 1
 flag = False
@@ -49,7 +49,7 @@ if flag:
         hsh = HASH_MAP[flag]
     except KeyError:
         print("Invalid flag", flag)
-        exit(1)
+        sys.exit(1)
     except:
         raise
 else:
@@ -60,7 +60,7 @@ filenames = sys.argv[offset:]
 
 if len(filenames) == 0:
     help()
-    exit(1)
+    sys.exit(1)
 
 for filename in filenames:
     fd = open(filename, "r")

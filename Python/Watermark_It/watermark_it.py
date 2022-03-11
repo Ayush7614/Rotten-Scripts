@@ -10,27 +10,26 @@ def input_and_validate():
     file_to_be_watermarked = input("Enter the file you want to watermark: ")
 
     # To ensure that the user inputs only pdf files
-    if file_to_be_watermarked.endswith(".pdf") == False:
+    if file_to_be_watermarked.endswith(".pdf") is False:
         sys.exit("Please enter only pdf files")
 
     # To check if the file to be watermarked is present in the current directory or not
-    if os.path.exists(file_to_be_watermarked) == False:
+    if os.path.exists(file_to_be_watermarked) is False:
         sys.exit(file_to_be_watermarked + " is not present in the directory")
 
     # The pdf file which contains the watermark
-    file_containing_watermark = input(
-        "Enter the file which has the watermark: ")
+    file_containing_watermark = input("Enter the file which has the watermark: ")
 
     # To ensure that the user inputs only pdf files
-    if file_containing_watermark.endswith(".pdf") == False:
+    if file_containing_watermark.endswith(".pdf") is False:
         sys.exit("Please enter only pdf files")
 
     # To check if the file containing the  watermark is present in the current directory or not
-    if os.path.exists(file_containing_watermark) == False:
-        sys.exit(file_containing_watermark +
-                 " is not present in the directory")
+    if os.path.exists(file_containing_watermark) is False:
+        sys.exit(file_containing_watermark + " is not present in the directory")
 
     return [file_to_be_watermarked, file_containing_watermark]
+
 
 # Function to read the pdfs and watermark the base pdf
 
@@ -60,8 +59,9 @@ def watermark_it(file_to_be_watermarked, file_containing_watermark):
         merge_object.add(watermark).render()
 
     # Creating an output file with modified name
-    watermarked_output = "watermarked_" + \
-        file_to_be_watermarked.split(".pdf")[0] + ".pdf"
+    watermarked_output = (
+        "watermarked_" + file_to_be_watermarked.split(".pdf")[0] + ".pdf"
+    )
 
     # Writing the merged base file object to the output file
     writer_object.write(watermarked_output, base_file_object)

@@ -298,3 +298,19 @@ chromedriver.exe
 
 # for node_modules
 node_modules
+
+#Twitter_Unfollowers
+db.json
+
+### Rust ###
+target/
+*.sw[opn]
+test.log
+/build/
+
+# Rust Youtube Downloader
+*.mp[34]
+
+#GD_Content_Downloader
+credentials.json
+token.json

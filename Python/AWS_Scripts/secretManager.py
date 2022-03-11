@@ -15,8 +15,7 @@ class secretManagerClass:
             service_name="secretsmanager", region_name=self.regionName
         )
         try:
-            getSecretValueResponse = client.get_secret_value(
-                SecretId=self.secretName)
+            getSecretValueResponse = client.get_secret_value(SecretId=self.secretName)
 
         except ClientError as err:
             if err.response["Error"]["Code"] == "ResourceNotFoundException":
@@ -31,5 +30,4 @@ class secretManagerClass:
         else:
             if "SecretString" in getSecretValueResponse:
                 return json.loads(getSecretValueResponse["SecretString"])
-            else:
-                raise ValueError("SecretString not found in reponse")
+            raise ValueError("SecretString not found in reponse")
